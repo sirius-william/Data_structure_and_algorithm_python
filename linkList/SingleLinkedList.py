@@ -64,7 +64,7 @@ class SingleLinkedList(object):
         if self.last.no == no and before is False:
             self.add(val)
             return
-            # 如果在中间添加节点，则执行下面的过程
+        # 如果在中间添加节点，则执行下面的过程
         temp = self.head
         while temp.next is not None:
             if not before:
@@ -140,6 +140,15 @@ class SingleLinkedList(object):
         if temp is None:
             return None
 
+    # 查找某值是否存在
+    def val_if_exist(self, val):
+        temp = self.head
+        while temp is not None:
+            if temp.val == val:
+                return True
+            temp = temp.next
+        return False
+
     # 查找正数第n个节点
     def getFromHead(self, n):
         if n > self.size():
@@ -213,6 +222,11 @@ class SingleLinkedList(object):
             temp = temp.next
         return size
 
+    # 判断链表是否为空
+    def is_empty(self):
+        return self.head.next is None
+
+    # 修改值
     def change(self, no, val):
         temp: Member = self.head
         while temp.next is not None:
@@ -220,3 +234,7 @@ class SingleLinkedList(object):
                 temp.val = val
                 break
             temp = temp.next
+
+    # 其他方式添加，可通过继承该类重写此方法添加自定义的增加节点方式
+    def addOtherMethod(self):
+        pass
